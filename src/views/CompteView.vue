@@ -100,7 +100,6 @@ if (userInfos.value && userInfos.value.genre) {
     genre.value = userInfos.value.genre == "M" ? "M." : "Mme."
 }
 
-
 const openModal = async (reservation) => {
     selectedReservation.value = reservation;
     modalView.value = 'details'; 
@@ -198,8 +197,6 @@ const ActiviteSupplémentaire = computed(() => {
     });
     return !Payant
 });
-
-
 
 const ouvrirModification = () => {
     if (!userInfos.value.adresse) {
@@ -310,7 +307,6 @@ const logout = async () => {
         localStorage.removeItem('user_infos');
         localStorage.removeItem('logged_in');
         localStorage.removeItem('reservation');
-        // Supprimer tous les cookies pour forcer la déconnexion
         document.cookie.split(';').forEach(c => {
             const name = c.split('=')[0].trim();
             document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';

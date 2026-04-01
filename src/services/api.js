@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-
-
 const api = axios.create({
   baseURL: 'https://apiclubmed-ddfxd0dwavhhawce.switzerlandnorth-01.azurewebsites.net/api',
   withCredentials: true,
@@ -12,7 +10,6 @@ const api = axios.create({
   }
 });
 
-// Endpoints publics qui ne doivent pas déclencher de redirection sur 401
 const PUBLIC_ENDPOINTS = [
     '/getLocalisationsWithSousLocalisation',
     '/GetAllRegroupement',

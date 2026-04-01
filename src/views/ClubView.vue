@@ -118,7 +118,6 @@ onMounted(async () => {
         }
     };
     
-    
     watch([dateArrivee, dateDepart], () => {
         fetchPrixSejour();
     });
@@ -144,7 +143,6 @@ onMounted(async () => {
             element.scrollIntoView({ behavior: 'smooth' });
         }
     };
-    
     
     const nettoyerPrix = (valeur) => {
         if (!valeur) return 0;
@@ -204,9 +202,7 @@ onMounted(async () => {
                 }
             });
             
-
             let prixBaseChambre = nettoyerPrix(reponse.data); 
-            
             
             if (isNaN(prixBaseChambre)) {
                  console.warn("Prix reçu invalide ou période non trouvée");
@@ -423,7 +419,6 @@ onMounted(async () => {
                 <h1 class="main-title">{{ club.titre }}</h1>
                 <p class="description-text">{{ club.description }}</p>
                 <header>
-                        <!-- ici -->
                     <img
                         :src="getDynamicImageUrl(club.photo.url)" 
                         :alt="'Photo principale de ' + club.titre"
@@ -489,7 +484,6 @@ onMounted(async () => {
                         Continuer ({{ (prixTotalAvecTransport ) || 0 }} €)
                     </button>
                 
-                                        
             </div>
                 
             <main>
@@ -572,7 +566,6 @@ onMounted(async () => {
                                 </div>
                                 
                                 <div class="room-image">
-                                    <!-- ICIII -->
                                     <img
                                         v-if="type.photo" 
                                         :src="getDynamicImageUrl(type.photo.url)" 
@@ -616,7 +609,6 @@ onMounted(async () => {
                         </h2>
                         <div v-if="club.activites && club.activites.length > 0">
                             
-                            <!-- ADULTES -->
                             <div v-if="activitesAdulte.length > 0" class="adults-section">
                                 <h3 class="section-title-age">
                                     Adultes
@@ -626,19 +618,14 @@ onMounted(async () => {
                                 
                                 <div v-for="(valeur, cle) in groupeTypeActivite" :key="cle" class="group-block">
                                     
-                                    <!-- En-tête Catégorie -->
                                     <div class="group-header">
-                                        <!-- Image -->
                                         <div v-if="valeur.photoUrl" class="hero-image-wrapper">
-                                            <!-- ICCIIIIIII -->
                                             <img  :src="getDynamicImageUrl(valeur.photoUrl)" :alt="cle" class="hero-image"/>
                                             
                                             <h3 class="hero-title">{{ cle }}</h3>
                                         </div>
 
-                                        <!-- Description & Badges -->
                                         <div class="group-description">
-                                            <!-- Titre si pas d'image -->
                                             <h3 v-if="!valeur.photoUrl" class="category-header-title" >{{ cle }}</h3>
                                             
                                             <p>{{ valeur.description }}</p>
@@ -654,7 +641,6 @@ onMounted(async () => {
                                         </div>
                                     </div>
 
-                                    <!-- Grille Cartes Activités -->
                                     <div class="cards-grid">
                                         <div v-for="act in valeur.activite" :key="act.idactivite" class="activity-card" @click="ouvrirModal(act)">
                                             <div class="card-header">
@@ -673,7 +659,6 @@ onMounted(async () => {
                                 </div>
                             </div>
 
-                            <!-- ENFANTS -->
                             <div v-if="activitesEnfants.length > 0" class="kids-section">
                             
                                 <h3 class="section-title-age">
@@ -709,7 +694,6 @@ onMounted(async () => {
 
                         </div>
 
-                        <!-- Empty State -->
                         <div v-else class="empty-state">
                             <p>Aucune activité disponible pour le moment.</p>
                         </div>
@@ -747,7 +731,6 @@ onMounted(async () => {
                             </div>
                         </div>
                     </section>                    
-                    
                     
                 </section>
             </main>
@@ -813,7 +796,6 @@ onMounted(async () => {
                         </div>
                     </div>
                 
-
                     <div v-if="activiteSelectionnee.enfant" style="margin-bottom: 30px; padding: 20px; background: #faf5ff; border: 1px solid #9333ea;">
                         <h4 style="font-size: 20px; margin-bottom: 20px; color: #000;">Informations pratiques</h4>
 
@@ -832,7 +814,6 @@ onMounted(async () => {
                         </div>
                     </div>
                 
-                    
                     <div style="display: flex; gap: 15px; margin-top: 30px;">
                         <button @click="fermerModal" style="padding: 15px 30px; border: 1px solid #ccc; background: white; font-weight: bold; cursor: pointer;">
                             Fermer

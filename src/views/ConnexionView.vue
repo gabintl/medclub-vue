@@ -91,7 +91,6 @@
   };
 
   const handleSuccessLogin = (data) => {
-    //   console.log("Token:", data);
         localStorage.setItem('logged_in', 'true');
         localStorage.setItem('user_infos', JSON.stringify(data.user));
       
@@ -103,7 +102,6 @@
       }
   }
   
-
   const handleGoogleCallback = async (response) => {
     console.log("Token Google reçu...");
     try {
@@ -157,9 +155,7 @@
   };
   
   onMounted(async () => {
-    // console.log("a")
       loadGoogleScript();
-    // console.log("b")
       
           try {
               if (!localStorage.getItem('logged_in')) return;
@@ -173,7 +169,6 @@
               });
               if (response.ok) {
                   const data = await response.json();
-                //   console.log("Données sécurisées reçues :", data);
                   localStorage.setItem('user_infos', JSON.stringify(data.user));
                   if(reservation){
                       localStorage.removeItem('reservation')
@@ -182,7 +177,6 @@
                       router.push('/compte');
                   }
               } else {
-                //   console.log("Session expirée");
                   localStorage.removeItem('logged_in');
               }
           } catch (e) {

@@ -8,41 +8,32 @@
     const hostname = window.location.hostname;
     const apiBaseURL = `https://apiclubmed-ddfxd0dwavhhawce.switzerlandnorth-01.azurewebsites.net/api`;
     
-    // --- ETAT GLOBAL ---
     const clubs = ref([]);
     const clubSelectionne = ref(null);
     const ongletActif = ref('activites');
     
-    // Gestion Partenaire
     const listePartenaires = ref([]);
     
-    // --- VARIABLES POUR LA POPUP (NOUVEAU) ---
     const showEditModal = ref(false);
     const formEdit = reactive({
         titre: '',
         description: ''
     });
     
-    // --- LISTES TAMPONS ---
     const listeActivitesAEnvoyer = ref([]);
     const listeChambresAEnvoyer = ref([]);
     const listeBarsAEnvoyer = ref([]);
     
-    // --- DATA REFERENTIEL ---
     const typesActivites = ref([]); 
     const tranchesAge = ref([]);
     
-    // --- MODIFICATION : PROPRIETE CALCULEE POUR LE TRI ---
     const typesActivitesTries = computed(() => {
-        // On copie le tableau avec [...array] pour ne pas toucher à l'original et on trie
         if (!typesActivites.value) return [];
         return [...typesActivites.value].sort((a, b) => {
-            // Tri alphabétique insensible à la casse et aux accents
             return a.titre.localeCompare(b.titre, 'fr', { sensitivity: 'base' });
         });
     });
     
-    // --- FORMULAIRES (Tes formulaires complets) ---
     const form = reactive({
         estAdulte: true, 
         titre: '',
@@ -69,7 +60,6 @@
         description_contexte: ''
     });
     
-    // --- REGEX ---
     const regexLettresSeules = /^[a-zA-Z\s\u00C0-\u00FF]+$/;
     const regexAlphaNumerique = /^[a-zA-Z0-9\s\u00C0-\u00FF]+$/;
     const regexChiffres = /^\d+$/;
@@ -112,7 +102,6 @@
         listeBarsAEnvoyer.value = [];
     };
     
-    // --- LOGIQUE ACTIVITES (Ta logique complète) ---
     const ajouterAuPanier = () => {
         if (!form.titre || !form.titre.trim()) return alert("Le titre est obligatoire.");
         if (!regexLettresSeules.test(form.titre)) return alert("Le titre ne doit contenir que des lettres.");
@@ -144,7 +133,6 @@
         alert("Activité ajoutée !");
     };
     
-    // --- LOGIQUE CHAMBRES (Ta logique complète) ---
     const ajouterChambreAuPanier = () => {
         if (!formChambre.nomtype || !formChambre.nomtype.trim()) return alert("Le nom est obligatoire.");
         if (!regexAlphaNumerique.test(formChambre.nomtype)) return alert("Lettres et chiffres uniquement pour le nom.");
@@ -158,7 +146,6 @@
         alert("Chambre ajoutée !");
     };
     
-    // --- LOGIQUE BARS (Ta logique complète) ---
     const ajouterBarAuPanier = () => {
         if (!formBar.nom || !formBar.nom.trim()) return alert("Le nom du bar est obligatoire.");
         if (!regexAlphaNumerique.test(formBar.nom)) return alert("Le nom du bar ne doit contenir que des lettres et chiffres.");
@@ -173,7 +160,6 @@
         alert("Bar ajouté à la liste !");
     };
     
-    // --- ENVOI API DES LISTES ---
     const toutEnvoyer = async () => {
         if (listeActivitesAEnvoyer.value.length === 0) return alert("Rien à envoyer.");
         try {
@@ -241,13 +227,10 @@
         } catch (e) { console.error(e); alert("Erreur lors de l'enregistrement des bars."); }
     };
     
-    // --- LOGIQUE VALIDATION ET POPUP (MODIFIÉ) ---
-    
     const ValiderPourTarifier = async () => {
         if(!clubSelectionne.value) return alert("Aucun club sélectionné.");
     
         try {
-            // 1. On vérifie seulement si le contenu physique est bon
             const response = await fetch(`${apiBaseURL}/clubs/verifTypeChambreActivité/${clubSelectionne.value.idclub}`, {
                 method: 'GET',
                 credentials: 'include',
@@ -266,8 +249,6 @@
             let resVerif = json;// A VERIFIER 
             
             if (resVerif.status === 'success') {
-                // 2. Si c'est bon, ON OUVRE LA POPUP
-                // On pré-remplit les champs avec les infos actuelles du club
                 formEdit.titre = clubSelectionne.value.titre;
                 formEdit.description = clubSelectionne.value.description; // ou textepresentation selon ta BDD
                 
@@ -278,9 +259,7 @@
             }
         } catch (e) {
             console.error(e);
-            // Gestion propre de l'erreur
             if (e.response && e.response.status === 422) {
-                 // Si le backend renvoie des détails, on peut les utiliser, sinon message générique
                  const msg = e.response.data.message || "Vous devez avoir un bar, une chambre et une activité au minimum.";
                  alert(msg);
             } else {
@@ -289,12 +268,10 @@
         }
     };
     
-    // --- CONFIRMATION FINALE (APPEL API) ---
     const confirmerEnvoiVente = async () => {
         if (!clubSelectionne.value) return;
     
         try {
-            // 1. Mise à jour des infos (PUT)
             const response = await fetch(`${apiBaseURL}/club/${clubSelectionne.value.idclub}/update-infos`, {
                 method: 'PUT',
                 credentials: 'include',
@@ -314,7 +291,6 @@
 
             const result = await response.json();
     
-            // 2. Changement de statut (PATCH vers Vente)
             const response2 = await fetch(`${apiBaseURL}/club/${clubSelectionne.value.idclub}/proposer-vente`, {
                 method: 'PATCH',
                 credentials: 'include',
@@ -330,7 +306,6 @@
 
             const result2 = await response2.json();
     
-            // 3. Feedback et nettoyage
             alert("✅ Dossier mis à jour et envoyé au Directeur Vente et partenaires notifiés (0 mails envoyes)! !");
             showEditModal.value = false;
             clubSelectionne.value = null;

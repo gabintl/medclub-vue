@@ -86,7 +86,6 @@ onMounted(async () => {
     try {
         const token = localStorage.getItem('user_token');
         
-        
         const response = await fetch(`${apiBaseURL}/check-token`, {
             method: 'GET',
             credentials: 'include',

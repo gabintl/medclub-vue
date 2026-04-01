@@ -130,23 +130,4 @@ const router = createRouter({
   ],
 })
 
-
-
-// router.beforeEach((to, from, next) => {
-//   const userInfos = JSON.parse(localStorage.getItem('user_infos'));
-//   const userRole = userInfos ? userInfos.role : null;
-//   const isAuthenticated = !!localStorage.getItem('user_token');
-//   if (to.meta.requiresAuth && !isAuthenticated) {
-//       return next('/login');
-//   }
-//   if (to.meta.roles && to.meta.roles.length > 0) {
-//       if (!userRole || !to.meta.roles.includes(userRole)) {
-//           console.warn(`Accès refusé. Rôle requis : ${to.meta.roles}, Rôle actuel : ${userRole}`);
-//           return next('/'); 
-//       }
-//   }
-//   next();
-// });
-
-
 export default router

@@ -92,7 +92,6 @@ const filteredClubs = computed(() => {
             if (!hasMatch) return false;
         }
 
-        
         if (filtresSelectionnes.value.activites.length > 0) {
             const clubActivitesStrings = [];
             if (club.activites) {
@@ -147,7 +146,6 @@ const paginatedClubs = computed(() => {
     const start = (currentPage.value - 1) * itemsPerPage;
     return sortedClubs.value.slice(start, start + itemsPerPage);
 });
-
 
 const destinationsDisponibles = computed(() => {
     const mapPays = new Set();
@@ -359,7 +357,6 @@ watch(() => route.fullPath, () => {
                 />
               </div>
 
-             
               <nav v-if="totalPages > 1" aria-label="Pagination navigation" class="pagination-nav">
                 <ul class="flex flex-row gap-4 list-none p-0 m-0">
                   <li>
@@ -401,8 +398,6 @@ watch(() => route.fullPath, () => {
         </div>
         
       </div>
-
-      
 
     </div>
   </div>
@@ -605,7 +600,6 @@ h2::after {
 .pagination-chevron:disabled img {
   opacity: 0.5; 
 }
-
 
 .next-chevron img {
   transform: rotate(180deg);

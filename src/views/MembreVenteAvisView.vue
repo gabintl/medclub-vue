@@ -129,8 +129,6 @@ const SupprimerReponse = async(numAvis) => {
                 </button>
             </div>
 
-
-
         <div v-if="true">
              <div v-for="avi in avisFiltres" :key="avi.numavis" class="avis-card">
                 <h3>
@@ -218,7 +216,6 @@ const SupprimerReponse = async(numAvis) => {
     animation: zoomIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animation avec petit rebond */
 }
 
-
 .icon-circle {
     width: 64px;
     height: 64px;
@@ -252,7 +249,6 @@ const SupprimerReponse = async(numAvis) => {
     margin-bottom: 24px;
     line-height: 1.5;
 }
-
 
 .btn-popup {
     background-color: #000;

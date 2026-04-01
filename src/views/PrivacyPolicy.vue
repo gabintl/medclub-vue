@@ -140,7 +140,6 @@
 <script>
 export default {
   name: 'PrivacyPolicy',
-  // Si vous avez besoin de métadonnées spécifiques pour le SEO, ajoutez-les ici
 }
 </script>
 

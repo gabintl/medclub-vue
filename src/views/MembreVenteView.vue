@@ -254,7 +254,6 @@ const EnvoyerMailPartenaire = async (activite,reservation) =>{
             
         }
         
-
     }
     catch (e) {
         console.error(e);
@@ -364,8 +363,6 @@ const DemandeAnnulation = async (numReservation) =>{
         messageErreur.value = "Erreur : Impossible de sauvegarder la réponse.";
     }
     
-
-
 }
 
 const PartenaireRepondu = (numReservation) => {
@@ -501,7 +498,6 @@ const PartenaireRepondu = (numReservation) => {
                                 </label>
                             </div>
                                 
-                            
                             </div>
                            
                         </div>
@@ -705,7 +701,6 @@ table button:hover {
     margin: 0 auto 20px auto;
 }
 
-
 .icon-circle.success {
     background-color: #d1fae5; 
     color: #059669; 
@@ -718,13 +713,11 @@ table button:hover {
     font-weight: 600;
 }
 
-
 .popup p {
     color: #6b7280;
     margin-bottom: 24px;
     line-height: 1.5;
 }
-
 
 .btn-popup {
     background-color: #000;

@@ -39,7 +39,6 @@ const removeFile = (index) => {
     console.log("Fichiers restants:", selectedFiles.value.length);
 };
 
-
 const messageNote = ref('');
 const messageTitre = ref('');
 const messageCommentaire = ref('');
@@ -181,7 +180,6 @@ const register = async () => {
                 <span>{{ messageNote }}</span>
             </div>
 
-            
             <div class="form-group">
                 <label for="titreAvis">Titre de votre avis</label>
                 <input 
@@ -198,7 +196,6 @@ const register = async () => {
                 <span>{{ messageTitre }}</span>
             </div>
 
-           
             <div class="form-group">
                 <label for="commentaire">Votre commentaire</label>
                 <textarea 
@@ -210,7 +207,6 @@ const register = async () => {
                 ></textarea>
             </div>
 
-           
             <div class="form-group">
                 <label for="photoAvis">
                     Vos Photos

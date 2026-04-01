@@ -15,7 +15,6 @@
     
     const wrapperRef = ref(null);
     const gererClicDehors = (event) => {
-        // Logique simplifiée ou supprimée si plus nécessaire
     };
     
     const panier = ref([]);
@@ -31,7 +30,6 @@
     const dateAujourdhui = new Date();
     dateAujourdhui.setHours(0, 0, 0, 0);
     
-    // Calcul du prix total
     const prixTotalGlobal = computed(() => {
         return panier.value.reduce((total, item) => total + (item.prixTotal || 0), 0);
     });
@@ -93,7 +91,6 @@
                     connecter.value = true;
                     voyageurPrincipal.value = resData.user;
                     localStorage.setItem('user_infos', JSON.stringify(resData.user));
-                    // J'ai supprimé chargerMesCartes() car on utilise Stripe maintenant
                 }
             }
         } catch (e) {
@@ -121,7 +118,6 @@
         window.removeEventListener('click', gererClicDehors);
     });
     
-    // Validation des voyageurs avant le paiement
     const passageReglement = () => {
         let ilYaUneErreur = false; 
         const regexLettres = /^[a-zA-ZÀ-ÿ\s-]+$/;
@@ -175,7 +171,6 @@
         }
     }
     
-    // Fonction appelée QUAND Stripe a réussi le paiement
     const onPaiementReussi = async () => {
         try {
             let indexVoyageurGlobal = 0; 

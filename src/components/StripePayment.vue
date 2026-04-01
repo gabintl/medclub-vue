@@ -35,7 +35,6 @@ onMounted(async () => {
         cardElement.value = elements.create('card');
         cardElement.value.mount('#card-element');
 
-        // Créer un PaymentIntent avec le montant en centimes
         const amountInCents = Math.round(props.montant * 100);
         const response = await api.get('/stripe/intent', { params: { amount: amountInCents } });
         clientSecret.value = response.data.client_secret;

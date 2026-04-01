@@ -39,8 +39,6 @@ onMounted(() => {
 });
 </script>
 
-
-
 <template>
   <nav>
     <RouterLink to="/">

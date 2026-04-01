@@ -54,7 +54,6 @@ const messageCodePostal = ref('');
 const messageVille = ref('');
 const messagePays = ref('');
 
-
 onMounted(async () => {
     try {
         const response = await fetch('https://restcountries.com/v3.1/all?fields=translations');
@@ -98,7 +97,6 @@ const chercherAdresse = async () => {
         }
     }, 300);
 };
-
 
 const selectionnerAdresse = (feature) => {
     const props = feature.properties;
@@ -254,7 +252,6 @@ const register = async () => {
         return;
     }
 
-
     try {
         const response = await fetch(`${apiBaseURL}/inscription`, {
             method: 'POST',
@@ -279,7 +276,6 @@ const register = async () => {
         const data = await response.json();
 
         if (response.ok) {
-            // localStorage.setItem('user_token', data.token);
             localStorage.setItem('user_infos', JSON.stringify(data.user));
             if(reservation){
                 localStorage.removeItem('reservation')
@@ -415,7 +411,6 @@ const register = async () => {
                     <span>{{ messagePasswordSpe}}</span>
 
             </div>
-
 
             <h3>Adresse</h3>
             <div>

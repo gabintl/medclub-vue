@@ -1,4 +1,3 @@
-// src/utils/imageUtils.js
 
 export function getClubImageUrl(imagePath) {
     if (!imagePath) {
@@ -11,7 +10,6 @@ export function getClubImageUrl(imagePath) {
     
     try {
         resolvedUrl = new URL(relativeAssetPath, import.meta.url).href;
-        
         
         return resolvedUrl;
 

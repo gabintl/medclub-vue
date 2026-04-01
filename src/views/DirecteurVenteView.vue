@@ -18,7 +18,6 @@ const protocol = window.location.protocol;
 const hostname = window.location.hostname;
 const apiBaseURL = `https://apiclubmed-ddfxd0dwavhhawce.switzerlandnorth-01.azurewebsites.net/api`;
 
-
 const moisSelectionne = ref(String(new Date().getMonth() + 1).padStart(2, '0'));
 const anneeSelectionnee = ref(String(new Date().getFullYear()));
 
@@ -28,7 +27,6 @@ const LISTE_MOIS = [
     { id: '07', label: 'Juillet' }, { id: '08', label: 'Août' },    { id: '09', label: 'Septembre' },
     { id: '10', label: 'Octobre' }, { id: '11', label: 'Novembre' },{ id: '12', label: 'Décembre' }
 ];
-
 
 const anneesDisponibles = computed(() => {
     const years = new Set();
@@ -42,14 +40,12 @@ const anneesDisponibles = computed(() => {
     return Array.from(years).sort().reverse();
 });
 
-
 const formatPrix = (val) => Number(val).toLocaleString("fr-FR");
 
 const formatEvolution = (val) => {
     const signe = val > 0 ? '+' : ''; 
     return `${signe}${val}%`;
 };
-
 
 const getReservationsByPeriod = (monthId, year) => {
     return allReservations.value.filter(r => {
@@ -59,7 +55,6 @@ const getReservationsByPeriod = (monthId, year) => {
         return rMonth === monthId && rYear === year;
     });
 };
-
 
 const getPeriodePrecedente = (monthId, year) => {
     let m = parseInt(monthId) - 1;
@@ -204,7 +199,6 @@ onMounted(async () => {
                 await chargerDonnees();
             }
         } else {
-            // localStorage.removeItem('user_token');
             router.push('/connexion');
         }
     } catch (e) {

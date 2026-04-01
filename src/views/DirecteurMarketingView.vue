@@ -59,8 +59,6 @@ const chargerDonnees = async () => {
         console.log("Clubs reçus :", repClubs);
         clubs.value = repClubs;
         
-
-
         clubs.value.forEach(club => {
             if (club.types_chambres_uniques) {
                 club.types_chambres_uniques.forEach(type => {
@@ -78,7 +76,6 @@ const chargerDonnees = async () => {
         chargement.value = false;
     }
 };
-
 
 const chargerPays = async () => {
     try {
@@ -139,13 +136,11 @@ const validerEtPublier = async (club) => {
             const val = prixSaisis.value[club.idclub][type.idtypechambre][p.numperiode];
             const prixFinal = val ? parseFloat(val) : 0; 
 
-           
             if (prixFinal <= 0) {
                 alert(`Erreur : Le prix pour la chambre "${type.nomtype}" (Période : ${p.numperiode}) doit être supérieur à 0.`);
                 return;
             }
            
-
             tarifs.push({
                 numperiode: p.numperiode,
                 idtypechambre: type.idtypechambre,
@@ -257,7 +252,6 @@ onMounted(() => {
                     VALIDER DÉFINITIVEMENT
                 </button>
 
-                
             </div>
         </div>
     </div>
@@ -308,8 +302,6 @@ onMounted(() => {
     background-color: #000000;
     color: #fff;
 }
-
-
 
 .page-wrapper {
     min-height: 100vh;

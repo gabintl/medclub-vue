@@ -25,14 +25,12 @@ const clubsFiltres = computed(() => {
         return props.clubs
     }
 
-    
     return props.clubs.filter(club => {
         
         if (!club.categorie || !Array.isArray(club.categorie)) {
             return false;
         }
 
-        
         return club.categorie.some(catDuClub => 
             props.categoriesActives.includes(catDuClub.nomcategory)
         )
@@ -146,8 +144,6 @@ section.categorie p {
   
   padding-bottom: 20px;
 }
-
-
 
 .card-club {
   height: 300px;

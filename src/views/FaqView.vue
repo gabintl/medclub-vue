@@ -219,7 +219,6 @@ const isOpen = (id) => !!openItems.value[id];
 
     </section>
 
-    
   <Footer />
 </template>
 
@@ -294,7 +293,6 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-
 
 .faq-item {
     position: relative;
