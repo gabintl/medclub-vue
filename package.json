@@ -1,0 +1,29 @@
+{
+  "name": "medclub-vue",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@stripe/stripe-js": "^8.6.1",
+    "axios": "^1.13.2",
+    "locomotive-scroll": "^5.0.1",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.22",
+    "vue-router": "^4.6.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.1.0",
+    "@vitejs/plugin-vue": "^5.2.4",
+    "sharp": "^0.34.5",
+    "vite": "^5.4.21",
+    "vite-plugin-image-optimizer": "^2.0.3"
+  }
+}
